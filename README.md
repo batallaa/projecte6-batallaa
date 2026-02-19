@@ -32,12 +32,16 @@ Al següent enllaç pots trobar l'enunciat complet del projecte [accés al proje
 - **T08**   -->   [T08: Vigilància i auditoria de sistemes](/Tasques/T08) ✅
 - **T09**   -->   [T09: Creació d’una acadèmia amb un curs de GreenIT amb Moodle](/Tasques/T09) 📂
 - **T10**   -->   [T10: Canvas LMS una alternativa a Moodle](/Tasques/T10) 🖨️
+- **T11**   -->   [T11: Comparativa Moodle vs Canvas LMS](/Tasques/T11) 🖥️
+- **T12**   -->   [T12: Curs Moodle “Serà rendible el meu futur negoci?”](/Tasques/T12) 📌
+- **T13**   -->   [T13: Omplim el curs de sostenibilitat ](/Tasques/T13) ♻️
+
 
 ## Projectes 📝
 
-- **P01**   -->   [P01: Control de versions. GitHub Classroom i git](/Productes/P01) 🧑‍💻
-- **P02**   -->   [P02: Llicenciament Windows Server 2025](/Productes/P02) 📊
-- **P03**   -->   [P03: Presentació empresa amb visió Green IT](/Productes/P03) 📋
+- **P01**   -->   [P01: Producte final memòria tècnica de la proposta](/Productes/P01) 🧑‍💻
+- **P02**   -->   [P02: Presentació de la proposta al client](/Productes/P02) 📊
+- **P03**   -->   [P03: Estructura repositori](/Productes/P03) 📋
 
 ## Guies Git i GitHub 📒
 
