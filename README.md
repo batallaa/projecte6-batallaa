@@ -1,16 +1,16 @@
-# projecte Nexus
+# Projecte Nexus 🦐
 
 ## Desplegament integral d'infraestructura segura per a entorns d'e-learning
 
-![Logo del projecte Nexus](pics/logotip.png)
+![Logo del projecte Nexus](https://www.gifss.com/profesiones/obreros/obrero-04.gif)
 
-## Autor
+## Autor 👤
 
-Nom: [Escriu el teu nom aquí]
+Nom: Biel Batalla Rabassa
 
-Formant grups de treball: [Escriu els noms dels membres del grup aquí]
+Formant grups de treball: Biel Batalla, Nezar Mghari i David Ballesteros
 
-## Descripció del projecte
+## Descripció del projecte 📑
 
 Projecte Nexus vol posar en marxa una plataforma de formació E-learning pròpia, orientada a cursos per a tècnics informàtics i demana que aquesta plataforma es construeixi sobre una infraestructura de servidor eficient, sostenible i amb costos controlats.
 
@@ -20,36 +20,26 @@ Al següent enllaç pots trobar l'enunciat complet del projecte [accés al proje
 
 ## Instruccions (per eliminar abans de lliurar el projecte)
 
-Un cop teniu la vostra còpia d'aquest repositori, heu de seguir els passos següents:
+## Tasques 📝
 
-1. **Editar aquest fitxer README.md**
-    - Incloure el vostre nom i els noms dels membres del grup.
+- **T01**   -->   [T01: Sota el Capó d'Internet: Què passa realment quan fas clic a un enllaç?](/Tasques/T01) 💾
+- **T02**   -->   [T02: Missió Apache: Desplegament Multidomini i segur](/Tasques/T02) 💻
+- **T03**   -->   [T03: Missió Nginx: Migració d'Alt Rendiment i Arquitectura Lleugera](/Tasques/T03) 🔄
+- **T04**   -->   [T04: Duel de titans, Apache vs Nginx](/Tasques/T04) 🌐 
+- **T05**   -->   [T05: Top Secret, protegint els secrets](/Tasques/T05) 🔒   
+- **T06**   -->   [T06: Projecte Nexus. Implantació de PKI i Signatura Digital Corporativa](/Tasques/T06) 🖥️
+- **T07**   -->   [T07: TransLògic: Administració Avançada i Seguretat Corporativa](/Tasques/T07) 🤝
+- **T08**   -->   [T08: Vigilància i auditoria de sistemes](/Tasques/T08) ✅
+- **T09**   -->   [T09: Creació d’una acadèmia amb un curs de GreenIT amb Moodle](/Tasques/T09) 📂
+- **T10**   -->   [T10: Canvas LMS una alternativa a Moodle](/Tasques/T10) 🖨️
 
-1. **Organització del repositori:**
-   - Cada activitat ha d'estar dins d'una carpeta titulada `Tasca01`, `Tasca02`, etc.
-   - Dins de cada carpeta de tasca, heu d'incloure un arxiu `README.md` amb la descripció detallada de l'activitat realitzada.
+## Projectes 📝
 
-```text
+- **P01**   -->   [P01: Control de versions. GitHub Classroom i git](/Productes/P01) 🧑‍💻
+- **P02**   -->   [P02: Llicenciament Windows Server 2025](/Productes/P02) 📊
+- **P03**   -->   [P03: Presentació empresa amb visió Green IT](/Productes/P03) 📋
 
-projecte6/
-├── README.md (aquest arxiu)
-├── Tasca01/
-│   └── README.md
-├── Tasca02/
-│   └── README.md
-├── Tasca03/
-│   └── README.md
-└── ...
-```
-
-1. **Procediment de treball:**
-   - A mesura que completeu cada tasca, actualitzeu el vostre repositori local amb els canvis.
-   - Cada dia, abans de finalitzar la jornada, pugeu els canvis al  repositori remot a GitHub.
-
-1. **Esborrar secció instruccions:**
-    - Un cop hàgiu completat la creació de les carpetes i actualitzat el vostre README.md, ja podeu eliminar aquesta secció d'instruccions per a una millor presentació del vostre projecte.
-
-## Guies Git i GitHub
+## Guies Git i GitHub 📒
 
 - [Introducció a Git i GitHub](https://github.com/SMX2n/IntroGitHub)
 - [Control de versions: Git](https://github.com/SMX2n/ControlVersions)
