@@ -122,5 +122,3 @@ Redactar una recomanació per Nexus:
 https://veracrypt.io/en/Beginner's%20Tutorial.html  
 
 📘 **Materials de Seguretat Informàtica — RA3** (Moodle)
-
-``
