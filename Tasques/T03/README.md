@@ -1,75 +1,82 @@
-# T03: Missió Nginx: Migració d'Alt Rendiment i Arquitectura Lleugera
+# 🚀 T03: Missió Nginx — Migració d'Alt Rendiment i Arquitectura Lleugera
 
-## Breu descripció
+## 📝 Breu descripció
 
-### Introducció
-La vostra implementació amb Apache ha estat un èxit i el client està satisfet. No obstant això, a la reunió d'estratègia tècnica d'ahir, la directiva va plantejar un nou repte: **l'escalabilitat**. Es preveu que Projecte Nexus rebi un pic de visites molt elevat durant la propera campanya de presentació.
+### 🔧 Introducció
+La vostra implementació amb Apache ha estat un èxit i el client està satisfet. No obstant això, a la reunió d'estratègia tècnica d'ahir, la directiva va plantejar un nou repte: **l'escalabilitat** 📈.  
+Es preveu que Projecte Nexus rebi un pic de visites molt elevat durant la propera campanya de presentació.
 
-Per aquest motiu, hem decidit obrir una línia de recerca i desenvolupament (R+D) per provar **Nginx**. Aquest servidor és conegut per la seva arquitectura orientada a esdeveniments, capaç de gestionar milers de connexions concurrents amb un consum de memòria molt inferior.
+Per aquest motiu, obrim una línia de **R+D** per provar **Nginx**, un servidor conegut per la seva arquitectura orientada a esdeveniments ⚡, capaç de gestionar milers de connexions concurrents amb molt poc consum de memòria.
 
-L'objectiu d'aquesta activitat és **replicar exactament la infraestructura** que vam muntar amb Apache, però utilitzant Nginx. Això ens permetrà comparar rendiment i tenir una alternativa d'altes prestacions al nostre catàleg de serveis.
+L'objectiu és **replicar exactament la infraestructura que teníem amb Apache** però utilitzant Nginx, per poder comparar rendiment i disposar d’una alternativa d’altes prestacions.
 
-> **Nota important:** Recordeu que dos serveis no poden escoltar pel mateix port (80/443) simultàniament a la mateixa IP. Haureu d'aturar Apache abans de començar.
-
----
-
-## Descripció de l'activitat
-
-L'activitat consisteix en la migració de la infraestructura web a un entorn **Nginx sobre Ubuntu Server**. Heu de documentar tot el procés en l'informe tècnic.
+> ⚠️ **Importante:** No poden funcionar dos serveis escoltant el port **80/443** alhora a la mateixa IP.  
+> Cal **aturar Apache** abans de començar.
 
 ---
 
-## 1. Preparació de l'Entorn i Instal·lació
+## 📘 Descripció de l'activitat
 
-- Atureu i deshabiliteu el servei Apache2 per alliberar els ports 80 i 443.
-- Instal·leu el servidor web Nginx.
-- Verifiqueu que el servei està actiu i que la pàgina de benvinguda de Nginx es mostra correctament al navegador.
-
----
-
-## 2. Configuració de Server Blocks (Multidomini)
-
-- Aprofiteu l'estructura de carpetes ja creada (`/var/www/nexus` i `/var/www/academia`).  
-  Si cal, ajusteu els permisos (propietari `www-data`).
-- Configureu **dos Server Blocks** (l'equivalent a VirtualHosts a Apache) a `/etc/nginx/sites-available/`.
-- Creeu els **enllaços simbòlics** a `sites-enabled/` per activar les configuracions.
-- Verifiqueu la sintaxis amb `nginx -t` abans de reiniciar el servei.
+Migrar tota la infraestructura web a **Nginx sobre Ubuntu Server** 🐧.  
+Cal documentar tot el procés en un informe tècnic.
 
 ---
 
-## 3. Personalització d'Errors
+## 1️⃣ Preparació de l'Entorn i Instal·lació
 
-- Configureu la directiva `error_page 404` dins del bloc de servidor corresponent.
-- Assegureu-vos que, quan es demani un fitxer inexistent, es mostri la pàgina d'error personalitzada creada anteriorment.
+- 🛑 Atureu i deshabiliteu **Apache2** per alliberar els ports.
+- 📥 Instal·leu el servidor web **Nginx**.
+- 🔍 Verifiqueu que està actiu i que la pàgina per defecte es veu al navegador.
 
 ---
 
-## 4. Seguretat i Certificats (HTTPS)
+## 2️⃣ Configuració de Server Blocks (Multidomini) 🌐🌐
 
-- Reutilitzeu els certificats SSL generats en l'activitat anterior (o genereu-ne de nous).
-- Configureu el Server Block per escoltar al port 443 i indiqueu les rutes:
+- Reutilitzeu les carpetes existents:  
+  - `/var/www/nexus`  
+  - `/var/www/academia`  
+- Ajusteu permisos si cal (`www-data`).
+- Creeu **dos Server Blocks** a `/etc/nginx/sites-available/`.
+- Activeu-los amb enllaços simbòlics cap a `sites-enabled/`.
+- Comproveu la sintaxi amb: `nginx -t` ✔️
+
+---
+
+## 3️⃣ Personalització d'Errors ❌➡️📄
+
+- Configureu la directiva:  
+  `error_page 404 /error/404.html;`
+- Verifiqueu que la pàgina d’error personalitzada apareix quan demaneu un fitxer inexistent.
+
+---
+
+## 4️⃣ Seguretat i Certificats (HTTPS) 🔐
+
+- Reutilitzeu o genereu els certificats SSL.
+- Configureu el bloc de servidor per escoltar a `443` amb:
   - `ssl_certificate`
   - `ssl_certificate_key`
-- Configureu una **redirecció 301** des del port 80 cap a la versió HTTPS del domini `disseny.local`.
+- Afegiu redirecció **301** permanent del port `80` cap a `https://disseny.local`.
 
 ---
 
-## 5. Optimització amb HTTP/2
+## 5️⃣ Optimització amb HTTP/2 ⚡📡
 
-- Habiliteu el protocol HTTP/2 afegint el paràmetre `http2` a la directiva `listen` del bloc SSL.
-- Comproveu amb les eines de desenvolupador del navegador que el contingut s'està servint amb aquest protocol.
-
----
-
-## Què cal lliurar
-
-- Una **memòria tècnica** de la instal·lació i configuració.
-- Ha d’incloure **explicacions clares** i **proves de funcionament**.
-- Els vostres clients no són tècnics, així que el document ha de ser entenedor.
+- Afegiu el paràmetre `http2` a la directiva `listen` del bloc SSL.
+- Verifiqueu al navegador que el contingut es serveix amb HTTP/2 (pestanya Network).
 
 ---
 
-## Material de suport
+## 📤 Què cal lliurar
 
-**UD5.AA2. El servidor Nginx.**  
+- Una **memòria tècnica detallada** amb:
+  - Explicacions clares 🧠
+  - Proves de funcionament 🖼️
+- Recordeu que els clients *no són experts*, així que el llenguatge ha de ser entenedor.
+
+---
+
+## 📚 Material de suport
+
+**UD5.AA2. El servidor Nginx**  
 Disponible al Moodle del mòdul de Serveis de Xarxa.
