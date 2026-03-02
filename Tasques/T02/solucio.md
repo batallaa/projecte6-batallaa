@@ -110,7 +110,3 @@ Per poder fer una pàgina d’errors personalitzada, fem el seguent:
 sudo nano /var/www/projectenexus/404.html
 sudo nano /var/www/academia/404.html
 ```
-
-
-
-
