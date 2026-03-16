@@ -1,209 +1,138 @@
-# 🏭🔐 T07: TransLògic — Administració Avançada i Seguretat Corporativa
+# T07: TransLògic: Administració Avançada i Seguretat Corporativa
 
-## 📝 Breu Descripció
+## 1. Polítiques de Seguretat i Contrasenyes (Seguretat Corporativa)
 
-### 🌐 Introducció  
-Tot i el volum de feina amb Projecte Nexus, TransLògic S.A. necessita que completeu la fase final del seu projecte basat en **Directori Actiu**.  
-L’empresa demana millores al seu entorn corporatiu basades en:
+### 1.1 Directives de password
 
-- 🔐 Seguretat de contrasenyes  
-- 🧭 Mobilitat d’usuaris  
-- 📦 Desplegament automàtic de programari  
-- 🗂️ Seguretat de dades  
-- 👨‍🔧 Delegació de funcions per a un helpdesk sense privilegis totals  
+Per poder editar les GPO, anem a "Tools" i a Group Policy Management.
 
-Cal documentar **tots els passos amb captures i explicacions tècniques**.
+![Captura 1](T07/img/i1.png)
 
----
+Per editar després les polítiques de les contrasenyes, entrem al editor de les GPO, despleguem Computer Configuration -> Policies -> Windows Settings -> Security Settings -> Account Policies -> Password Policy.
 
-# 🧩 0. Redisseny d’Estructura d’OU (abans de començar)
+![Captura 2](T07/img/i2.png)
 
-Repasseu la vostra estructura inicial i considereu simplificacions com:
+Entrem a la configuració de password i habilitem la configuració de contrasenyes.
 
-- **OU TransLogic**  
-  - OU Gerencia  
-  - OU Gestio  
-  - OU Magatzem  
-  - OU Equipaments  
-  - OU Perfils  
-  - OU Helpdesk
+![Captura 3](T07/img/i3.png)
 
-L’objectiu és:  
-➡️ Aplicar GPO de manera ordenada  
-➡️ Delegar permisos fàcilment  
-➡️ Gestionar usuaris i equips sense confusió
+Definim un mínim de caràcters per la contrasenya dels usuaris. En el meu cas serà de 8.
 
----
+![Captura 4](T07/img/i4.png)
 
-# 🔐 1. Polítiques de Seguretat i Contrasenyes
+Podem canviar configuracions varies de les contrasenyes, com els dies que es recorda la contrasenya, el temps màxim perquè la contrasenya es canvïi o el mínim de canvi de contrasenya.
 
-## 🔸 1.1 Política Global (Default Domain Policy)
-Aplica a TOT EL DOMINI:
+![Captura 5](T07/img/i5.png)
 
-- Contrasenya mínima: **8 caràcters**
-- Es modifica a:  
-  **Default Domain Policy → Password Policy**
+### 1.2 Administradors locals
 
-## 🔸 1.2 Política per a Gerència (GPO específica)
-A l’OU *Gerencia*:
+Movem les plantilles d'usuaris del nostre domini a la OU de gerencia. 
 
-- Mínim **18 caràcters**
-- Caducitat cada **28 dies**
-- ❌ Complexitat deshabilitada
-- La GPO només afecta al grup **gerencia**
+![Captura 6](T07/img/i6.png)
 
-## 🔸 1.3 Bonus — 3a GPO proposada (Seguretat en logística)
-### Proposta recomanada:  
-🔒 **Bloqueig automàtic de sessió als usuaris de Magatzem**  
-- Justificació: en un entorn logístic els equips sovint queden desatesos, i això pot provocar:
-  - Accés no autoritzat  
-  - Manipulació de comandes  
-  - Pèrdua de dades  
+Creem una nova ou que s'anomena BCN. Dins d'aquesta Crearem una altre anomenada Computers i aplicarem una GPO anomenada "Contrasenyes".
 
-Es configura un bloqueig automàtic de pantalla als 3–5 minuts.
+![Captura 7](T07/img/i7.png)
 
-Altres opcions possibles:  
-- Fons corporatiu  
-- Prohibició d’instal·lar programari extern  
-- Limpieza del perfil temporal  
+Configurem la GPO del grup de Gerència per tal que el password caduqui cada 28 dies i tingui una allargada mínima de 18 caràcters. No activem complexitat.
 
----
+![Captura 8](T07/img/i8.png)
 
-# 📦 2. Desplegament Automatitzat de Programari
+## 2. Desplegament Automatitzat de Programari
 
-## 🔸 2.1 Departament de Gestió → Instal·lació Assignada (7zip)
-Per al grup **gestio**:
+Per fer la instal·lació desatesa de programes crearem una carpeta compartida on donarem permisos per llegir als usuaris.
 
-1. Col·loqueu el `.msi` de 7zip a una carpeta compartida.
-2. Creeu una GPO → *Assign Software*
-3. S’instal·la automàticament al reiniciar.
+![Captura 14](T07/img/i14.png)
 
-## 🔸 2.2 Departament de Gerència → Desplegament Publicat (Firefox)
-Per al grup **gerencia**:
+### 2.1 Departament de Gestió (7zip)
 
-1. Col·loqueu el `.msi` de Firefox a la carpeta compartida.
-2. Creeu una GPO → *Publish Software*
-3. S’instal·la des de:
-   ```
-   Tauler de Control → Add/Remove Programs → Install a program from the network
-   ```
+Creem una carpeta on descarregarem el programari per la gestió de factures. Per això dins del nostre disc "DATA" crearem una carpeta anomenada "Programari" i la compartirem per xarxa.
 
----
+![Captura 9](T07/img/i9.png)
 
-## ❓ Pregunta del Client  
-**“Com podem crear els nostres propis fitxers .msi si una aplicació només ve amb .exe?”**
+Despleguem el programari 7zip en la nostra GPO de Gestió.
 
-### ✔️ Resposta breu:
-Cal utilitzar eines de *reempacatge* (*repackaging*), com:
+![Captura 10](T07/img/i10.png)
 
-- **Advanced Installer**
-- **EMCO MSI Package Builder**
-- **WiX Toolset**
-- **MSIX Packaging Tool (Microsoft)**
+Seleccionem la opció avançada per configurar les opcions a desplegar el programari. 
 
-Aquestes eines capturen els canvis del sistema realitzats per l’instal·lador `.exe` i generen un **paquet .msi** gestionable pel Directori Actiu.
+![Captura 11](T07/img/i11.png)
 
----
+A Deployment, seleccionem del tipus assigned. A les opcions marquem l'última i maximitzem les opcions d'interfaç.
 
-# 🧭 3. Mobilitat d’Usuaris (Perfils Mòbils)
+### 2.2 Departament de Gerència (Firefox)
 
-Els usuaris de **gestio** utilitzen diversos equips.
+Creem una nova GPO anomenada Firefox per el departament de gerència. Afegirem el Firefox en el software de la GPO.
 
-## Procediment:
-1. Crear una carpeta compartida al servidor:
-   ```
-   \\server\perfils
-   ```
-2. Donar permisos:
-   - Usuari → *Create folder / Append Data*
-   - Admins → Full Control
-3. A l’usuari del grup **gestio**, configurar:
-   ```
-   Profile path: \\server\perfils\%username%
-   ```
-4. Crear un nou usuari de prova i iniciar sessió.
-5. Verificar que s'ha generat automàticament:
-   ```
-   \\server\perfils\NOM_USUARI
-   ```
+![Captura 12](T07/img/i12.png)
 
----
+Al afegirla, indicarem que volem configurar-lo de forma avançada i posarem tipus de deployment published, deixem marcada la primera opció i maximitzarem les opcions d'interfaç.
 
-# 🗄️ 4. Redirecció de Carpetes (Documents)
+![Captura 13](T07/img/i13.png)
 
-Per evitar pèrdua de dades:
+Comprovem a la màquina client que Firefox està instal·lat.
 
-1. Crear GPO a nivell de domini.
-2. Configurar:
-   ```
-   User Configuration → Policies → Windows Settings → Folder Redirection → Documents
-   ```
-3. Redirigir a:
-   ```
-   \\server\home\%username%\documents
-   ```
-4. Prova:
-   - Guardar un fitxer a Documents en el client  
-   - Comprovar que apareix al servidor
+![Captura 23](T07/img/i23.png)
 
----
+### 2.3 Aplicar GPO a un grup
 
-# 🧑‍💻 5. Delegació de Funcions (Helpdesk)
+Anem a la GPO que hem creat -> security filtering i eliminem el filtratge als usuaris autenticats. 
 
-La direcció vol crear un auxiliar que pugui:
+![Captura 15](T07/img/i15.png)
 
-- 🔁 Reiniciar contrasenyes
-- 👥 Modificar pertinença a grups
+Després, anem a delegation, pressionem "add" i afegim afegim "authenticated users".
 
-però **no**:
+![Captura 16](T07/img/i16.png)
 
-- ❌ Crear usuaris nous
-- ❌ Eliminar comptes
-- ❌ Modificar GPO
+Donem permisos perquè puguin llegir.
 
-## Procediment:
-1. Crear usuari: **adminOU** a l’OU Usuaris.
-2. Botó dret sobre l’OU principal (TransLogic):  
-   → *Delegate Control*
-3. Assignar permisos:
-   - Reset Password  
-   - Read all user information  
-   - Modify group membership  
-4. Provar des del client:
-   - ✔️ Canviar contrasenya d’un usuari  
-   - ✔️ Afegir-lo a un grup  
-   - ❌ Intentar crear usuari → *Permís denegat*
+![Captura 17](T07/img/i17.png)
 
-Aquestes captures han d'aparèixer a l’informe.
+Ara. anem a "scope", anem a "add" i afegim el grup al que volem aplicar la GPO.
 
----
+![Captura 18](T07/img/i18.png)
 
-# 📤 Què cal lliurar
+Fem el mateix amb tots els programes. Si comprovem a la màquina client, veurem com tenim el programa instal·lat.
 
-## 📝 Informe tècnic (Markdown)
-Incloure:
+![Captura 19](T07/img/i19.png)
 
-### ✔️ Estructura d’OU revisada i justificació  
-### ✔️ Captures comentades:
-- GPO creades  
-- Resultats de perfils mòbils  
-- Redirecció de carpetes aplicada  
-- Delegació de permisos  
-- Instal·lació automàtica i publicada de programari  
-- Logs d’auditoria si aplica  
+### 2.4 Pregunta de Consultoria
 
-### ✔️ Justificació de la 3a GPO  
-### ✔️ Resposta tècnica sobre creació de MSI  
-### ✔️ Proves de funcionament:
-- `gpresult /r` o `gpresult /h informe.html`
-- Carpeta "Documents" redirigida
-- Perfil mòbil generat
-- Error al crear usuari amb adminOU
+**Com podem crear els nostres propis fitxers .msi si una aplicació només ve amb un .exe?**
 
----
 
-# 📚 Material de Suport
 
-📘 **UD7 – SOX: AA1, AA2 i AA4 (Moodle)**  
-🪟 Documentació oficial de Microsoft – Group Policy, AD DS, Folder Redirection  
-📦 Guia de paquets MSI – Advanced Installer, EMCO, MSIX Packaging Tool
+## 3. Mobilitat d'Usuaris (Perfils Mòbils)
+
+Creem una carpeta compartida amb el nom que volguem i apliquem permisos als usuaris del domini.
+
+![Captura 20](T07/img/i20.png)
+
+Editem la plantilla de la carpeta de profile i posem al final %USERNAME%
+
+![Captura 21](T07/img/i21.png)
+
+Iniciem sessió com a nou usuari i al anar a les carpetes hauríem de veure la nostra carpeta personal creada.
+
+![Captura 22](T07/img/i22.png)
+
+## 4. Seguretat de Dades (Redirecció de Carpetes)
+
+Per la redirecció de carpetes, anem a "Default Domain Policy" i anem a editar.
+
+![Captura 24](T07/img/i24.png)
+
+Anem a la seguent ruta: User Configuration -> Windows Settings -> Folder Redirection i anem a les propietats de la carpeta Documents.
+
+![Captura 25](T07/img/i25.png)
+
+A les propietats, indiquem setting basic, i introduim el directori de la carpeta homes del domini.
+
+![Captura 26](T07/img/i26.png)
+
+Si iniciem sessió a la màquina client, podem veure la carpeta documents creada. 
+
+![Captura 27](T07/img/i27.png)
+
+## 5. Delegació de Funcions (Helpdesk)
+
