@@ -96,6 +96,8 @@ Fem el mateix amb tots els programes. Si comprovem a la màquina client, veurem 
 
 ![Captura 19](T07/img/i19.png)
 
+
+
 ### 2.4 Pregunta de Consultoria
 
 **Com podem crear els nostres propis fitxers .msi si una aplicació només ve amb un .exe?**
@@ -133,6 +135,8 @@ A les propietats, indiquem setting basic, i introduim el directori de la carpeta
 Si iniciem sessió a la màquina client, podem veure la carpeta documents creada. 
 
 ![Captura 27](T07/img/i27.png)
+
+
 
 ## 5. Delegació de Funcions (Helpdesk)
 
