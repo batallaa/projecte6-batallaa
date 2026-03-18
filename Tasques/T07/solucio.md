@@ -135,8 +135,30 @@ A les propietats, indiquem setting basic, i introduim el directori de la carpeta
 Si iniciem sessió a la màquina client, podem veure la carpeta documents creada. 
 
 ![Captura 27](T07/img/i27.png)
-
-
+![Captura 28](T07/img/i28.png)
 
 ## 5. Delegació de Funcions (Helpdesk)
 
+Creem un usuari per la delegació de funcions. Aquest usuari ha de poder reiniciar contrasenyes dels usuaris i els grups. Creem l'usuari dins de la OU d'usuaris. S'anomenarà adminOU.
+
+![Captura 29](T07/img/i29.png)
+
+Li deleguem el control a la OU adminOU.
+
+![Captura 30](T07/img/i30.png)
+
+Afegim l'usuari acabat de crear (adminOU).
+
+![Captura 31](T07/img/i31.png)
+
+Aquest usuari només ha de poder canviar contrasenyes i modificar grups. Per això, marcarem les seguents caselles:
+
+![Captura 32](T07/img/i32.png)
+
+Iniciem sessió al usuari client per comprovar si podem canviar contrasenyes dins de la nostra OU. Si ho intentem des d'una altre OU, no ens funcionarà.
+
+![Captura 33](T07/img/i33.png)
+
+També podem modificar OUs des de la màquina client.
+
+![Captura 34](T07/img/i34.png)
