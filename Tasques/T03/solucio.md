@@ -227,6 +227,7 @@ Anyadim el paràmetre http2 a l'arxiu de config .tls.
 
 ```bash
 sudo nano /etc/nginx/sites-enabled/projectenexus.tls
+sudo nano /etc/nginx/sites-enabled/academia.tls
 ```
 
 ![Captura 27](/Tasques/T03/img/i27.png)
