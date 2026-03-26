@@ -6,15 +6,15 @@ Especificacions de les màquines:
 
 **Màquina servidor**
 
-![Captura 1](T03/img/i01.png)
+![Captura 1](/Tasques/T03/img/i1.png)
 
 **Màquina client**
 
-![Captura 2](T03/img/i01.png)
+![Captura 2](/Tasques/T03/img/i2.png)
 
 Comprovem ip del servidor:
 
-![Captura 3](T03/img/i03.png)
+![Captura 3](/Tasques/T03/img/i3.png)
 
 ### 1.1 Deshabilitar nginxs
 
@@ -33,7 +33,7 @@ Instal·lem el servei nginx.
 sudo apt install nginx -y
 ```
 
-![Captura 4](T03/img/i04.png)
+![Captura 4](/Tasques/T03/img/i4.png)
 
 ### 1.3 Verificació
 
@@ -43,7 +43,7 @@ Verifiquem que el servei nginx funciona correctament.
 sudo systemctl status nginx 
 ```
 
-![Captura 5](T03/img/i05.png)
+![Captura 5](/Tasques/T03/img/i5.png)
 
 ## 2. Server Blocks
 
@@ -56,7 +56,7 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/projectene
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/academia
 ```
 
-![Captura 6](T03/img/i06.png)
+![Captura 6](/Tasques/T03/img/i6.png)
 
 Ara, editem.
 
@@ -65,8 +65,8 @@ sudo nano /etc/nginx/sites-available/projectenexus
 sudo nano /etc/nginx/sites-available/academia
 ```
 
-![Captura 7](T03/img/i07.png)
-![Captura 8](T03/img/i08.png)
+![Captura 7](/Tasques/T03/img/i7.png)
+![Captura 8](/Tasques/T03/img/i8.png)
 
 ### 2.2 Enllaços simbòlics
 
@@ -77,7 +77,7 @@ sudo ln -s /etc/nginx/sites-available/projectenexus /etc/nginx/sites-enabled/
 sudo ln -s /etc/nginx/sites-available/academia /etc/nginx/sites-enabled/
 ```
 
-![Captura 9](T03/img/i09.png)
+![Captura 9](/Tasques/T03/img/i9.png)
 
 Modifiquem l'arxiu següent per treballar amb diferents noms de domini (treiem el #)
 
@@ -85,7 +85,7 @@ Modifiquem l'arxiu següent per treballar amb diferents noms de domini (treiem e
 sudo nano /etc/nginx/nginx.conf
 ```
 
-![Captura 10](T03/img/i10.png)
+![Captura 10](/Tasques/T03/img/i10.png)
 
 Comprovem errors sintàctics:
 
@@ -99,15 +99,15 @@ Reiniciem el servei:
 sudo systemctl restart nginx
 ```
 
-![Captura 11](T03/img/i11.png)
+![Captura 11](/Tasques/T03/img/i11.png)
 
 **Projecte Nexus**
 
-![Captura 12](T03/img/i12.png)
+![Captura 12](/Tasques/T03/img/i12.png)
 
 **Academia**
 
-![Captura 13](T03/img/i13.png)
+![Captura 13](/Tasques/T03/img/i13.png)
 
 ## 3. Pàgina error 404
 
@@ -118,8 +118,8 @@ sudo nano /etc/nginx/sites-available/projectenexus
 sudo nano /etc/nginx/sites-available/academia
 ```
 
-![Captura 14](T03/img/i14.png)
-![Captura 15](T03/img/i15.png)
+![Captura 14](/Tasques/T03/img/i14.png)
+![Captura 15](/Tasques/T03/img/i15.png)
 
 Comprovem errors sintàctics:
 
@@ -133,15 +133,15 @@ Reiniciem el servei:
 sudo systemctl restart nginx
 ```
 
-![Captura 16](T03/img/i16.png)
+![Captura 16](/Tasques/T03/img/i16.png)
 
 **Pàgina error Projectenexus:**
 
-![Captura 17](T03/img/i17.png)
+![Captura 17](/Tasques/T03/img/i17.png)
 
 **Pàgina error Academia:**
 
-![Captura 18](T03/img/i18.png)
+![Captura 18](/Tasques/T03/img/i18.png)
 
 ## 4. SSL (HTTPS)
 
@@ -154,7 +154,7 @@ sudo cp projectenexus projectenexus.tls
 sudo cp academia academia.tls
 ```
 
-![Captura 19](T03/img/i19.png)
+![Captura 19](/Tasques/T03/img/i19.png)
 
 Editem els arxius i els modifiquem:
 
@@ -163,8 +163,8 @@ sudo nano /etc/nginx/sites-available/projectenexus.tls
 sudo nano /etc/nginx/sites-available/academia.tls
 ```
 
-![Captura 20](T03/img/i20.png)
-![Captura 21](T03/img/i21.png)
+![Captura 20](/Tasques/T03/img/i20.png)
+![Captura 21](/Tasques/T03/img/i21.png)
 
 Creem els enllaços simbòlics per habilitar els sites:
 
@@ -173,7 +173,7 @@ sudo ln -s /etc/nginx/sites-available/projectenexus.tls /etc/nginx/sites-enabled
 sudo ln -s /etc/nginx/sites-available/academia.tls /etc/nginx/sites-enabled/academia.tls
 ``` 
 
-![Captura 22](T03/img/i22.png)
+![Captura 22](/Tasques/T03/img/i22.png)
 
 Comprovem errors sintàctics:
 
@@ -195,8 +195,8 @@ sudo nano /etc/nginx/sites-available/projectenexus.tls
 sudo nano /etc/nginx/sites-available/academia.tls
 ```
 
-![Captura 23](T03/img/i23.png)
-![Captura 24](T03/img/i24.png)
+![Captura 23](/Tasques/T03/img/i23.png)
+![Captura 24](/Tasques/T03/img/i24.png)
 
 Forçem la redirecció perquè faci servir https. 
 
@@ -207,11 +207,11 @@ sudo nano /etc/nginx/sites-enables/academia
 
 **Projecte nexus**
 
-![Captura 25](T03/img/i25.png)
+![Captura 25](/Tasques/T03/img/i25.png)
 
 **Academia**
 
-![Captura 26](T03/img/i26.png)
+![Captura 26](/Tasques/T03/img/i26.png)
 
 Fem la comprovació de funcionament:
 
@@ -229,7 +229,7 @@ Anyadim el paràmetre http2 a l'arxiu de config .tls.
 sudo nano /etc/nginx/sites-enabled/projectenexus.tls
 ```
 
-![Captura 27](T03/img/i27.png)
+![Captura 27](/Tasques/T03/img/i27.png)
 
 Reiniciem el servei i fem comprovacions.
 
