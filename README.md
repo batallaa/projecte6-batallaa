@@ -18,7 +18,10 @@ Per aquest motiu, Projecte Nexus encarrega al vostre equip tècnic (vosaltres) l
 
 Al següent enllaç pots trobar l'enunciat complet del projecte [accés al projecte Nexus](https://docs.google.com/document/d/1dyntLKYDdo1CpgM7ZmHbXXD5VhMYAe9-/edit?usp=sharing&ouid=104728425662496836733&rtpof=true&sd=true)
 
-## Instruccions (per eliminar abans de lliurar el projecte)
+## Problema i Solució
+
+- **Problema:** El client Nexus necessitava una infraestructura de servidor per muntar una plataforma e-learning segura, eficient i amb costos controlats, però no sabia quines tecnologies triar.
+- **Solució:** Vam desplegar i comparar Apache vs Nginx (recomanant Nginx), vam implementar certificats SSL amb PKI pròpia i vam comparar Moodle vs Canvas per recomanar la millor opció per al client.
 
 ## Tasques 📝
 
